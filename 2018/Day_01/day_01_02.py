@@ -7,16 +7,17 @@ with open(fp, mode='r') as doc:
 
 total = 0
 index = 0
-all_totals = [0]
+all_totals_set = set()
+all_totals_set.add(0)
 
 while index < len(int_imp):
     total = total + int_imp[index]
-    if total in all_totals:
+    cur_total = len(all_totals_set)
+    all_totals_set.add(total)
+    if len(all_totals_set) != (cur_total + 1):
         print(total)
         break
-    all_totals.append(total)
     index = index + 1
     if index == len(int_imp):
         index = 0
-    if (len(all_totals) % 10000) == 0:
-        print(len(all_totals))
+
