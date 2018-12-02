@@ -13,7 +13,8 @@ all_totals_set.add(0)
 while index < len(int_imp):
     total = total + int_imp[index]
     cur_total = len(all_totals_set)
-    all_totals_set.add(total)
+    all_totals_se
+    t.add(total)
     if len(all_totals_set) != (cur_total + 1):
         print(total)
         break
