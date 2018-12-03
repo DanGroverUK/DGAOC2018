@@ -38,11 +38,16 @@ for h in range(0, total_height):
         width_list.append([])
     total_list.append(width_list)
 
+for entry in input_list:
+    for h in range(entry["top"], (entry["top"] + entry["height"])):
+        for w in range(entry["left"], (entry["left"] + entry["width"])):
+            total_list[h][w].append(entry["id"])
+
+overlap_counter = 0
+for row in total_list:
+    for cell in row:
+        if len(cell) > 1:
+            overlap_counter = overlap_counter + 1
 
 
-
-
-# print(input_list)
-# print("Total Grid Count: {}".format(len(total_list)))
-# print("Total Height: {}".format(total_height))
-# print("Total Width: {}".format(total_width))
+print(overlap_counter)
