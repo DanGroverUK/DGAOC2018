@@ -10,7 +10,7 @@ hold = 1
 tip = 1
 a = 0
 fv = 0
-height = 21
+height = 50
 while a < (height - 1):
     while fv != tip:
         if tip > 0:
@@ -39,7 +39,7 @@ entries[0].append(0)
 tip = 0
 a = 1
 fv = 0
-height = 21
+
 while a < (height - 1):
     while fv != tip:
         if tip > 0:
@@ -52,6 +52,7 @@ while a < (height - 1):
             a = a + 1
     while fv == tip:
         for b in range(1, hold):
+            print("HOLD ADD! {}".format(fv))
             entries[a].append(fv)
             a = a + 1
         hold = hold + 1
