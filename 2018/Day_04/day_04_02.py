@@ -71,15 +71,20 @@ while a < (len(sorted_list) - 3):
 # fall asleep in total - from this we can get both the length of time they're asleep and
 # the minute they do so most frequently.
 
-sorted_asleep = sorted(minutes_asleep, key=lambda k: len(k["minutes"]))
-for a in sorted_asleep:
-    print("{} slept for {} minutes!".format(a["id"], len(a["minutes"])))
+highest_minutes = 0
+winner_winner_chicken_dinner = 0
+for i in minutes_asleep:
+    # Find the #1 most common minute for this person to be asleep during
+    mc = collections.Counter(i["minutes"]).most_common(1)
+    # from this we can also get how many times they are
+    which_minute = mc[0][0]
+    most_common = mc[0][1]
+    # Compare that to the current highest
+    if most_common > highest_minutes:
+        # if it's the new highest, set this value as the highest
+        highest_minutes = most_common
+        # Also set the winning variable to be the answer we need
+        winner_winner_chicken_dinner = int(i["id"]) * which_minute
 
+print("Result: {}".format(winner_winner_chicken_dinner))
 
-final_entry = sorted_asleep[len(sorted_asleep) - 1]
-print("ID of guard who sleeps the most: {}".format(final_entry["id"]))
-minute_counter = collections.Counter(final_entry["minutes"])
-most_common_minute = minute_counter.most_common(1)
-print("And they slept most frequently at 00:{}".format(most_common_minute[0][0]))
-result = int(final_entry["id"]) * int(most_common_minute[0][0])
-print("ID multiplied by minute: {}".format(result))
